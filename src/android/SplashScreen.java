@@ -282,6 +282,10 @@ public class SplashScreen extends CordovaPlugin {
                 splashImageView = new ImageView(context);
                 splashImageView.setImageResource(drawableId);
                 LayoutParams layoutParams = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+
+                // @SK: Trying to display the logo in the bottom right corner only
+                //layoutParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+                //layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
                 splashImageView.setLayoutParams(layoutParams);
 
                 splashImageView.setMinimumHeight(display.getHeight());
@@ -296,7 +300,9 @@ public class SplashScreen extends CordovaPlugin {
                 }
                 else {
                     // FIT_XY scales image non-uniformly to fit into image view.
-                    splashImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+                    //splashImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+                    // @SK: Trying 'END' scale, where things fit on the bottom right after scaling
+                    splashImageView.setScaleType(ImageView.ScaleType.FIT_END);
                 }
 
                 // Create and show the dialog
